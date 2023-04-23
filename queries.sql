@@ -98,3 +98,17 @@ select * from `made_of`;
 select * from `part`;
 
 
+/*add an order for pc*/
+INSERT INTO `payment` VALUES ('card00011',6009516990801866,'08/29',498,'Jermaine Taylor');
+INSERT INTO `order` VALUES (1000023466,'2023-05-06','ad972f','outlet0003','card00011');
+INSERT INTO `order_contains_pc` VALUES (1000023466,'pc0002');
+
+/*add an order for part*/
+INSERT INTO `payment` VALUES ('card00012',2049516990666008,'10/25',589,'Justine Barnett');
+INSERT INTO `order` VALUES (1000023467,'2023-05-09','c355b5','outlet0002','card00012');
+INSERT INTO `order_contains_part` VALUES (1000023467,'inteli9cpu0008');
+
+/*delete an order with order number*/
+DELETE FROM `order`
+WHERE ordernumber = '1000023461';
+
