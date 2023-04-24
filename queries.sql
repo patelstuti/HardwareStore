@@ -143,3 +143,7 @@ WHERE ordernumber = '1000023461';
 UPDATE `stores`
 SET quantity = '20'
 WHERE warehouseid = 'warehouse0005' AND modelnumber = 'amdryzencpu0010';
+
+
+-- functional requirement 12
+mysqldump -u dbadmin –p compretailpass123 -h localhost compretailsys > backup_mm_dd_yy_hh_mm_ss.sql
