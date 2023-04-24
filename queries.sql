@@ -1,6 +1,4 @@
-USE create.sql;
-USE insert.sql;
-
+--functional requirement 1
 /* add a part*/
 INSERT INTO `part` 
 VALUES ('inteli9cpu0012','CPU',2,999.99,'skuinteli9gen14','266b3a07-b191e7f91991');
@@ -16,7 +14,7 @@ where modelnumber = 'amdryzencpu0007';
 DELETE FROM `part` 
 WHERE modelnumber = 'amdryzencpu0007';
 
-
+-- functional requirement 2
 /*Manufacturer able to view all the parts they manufacture using the manufacture ID*/
 SELECT * 
 FROM manufacturer 
@@ -27,6 +25,7 @@ FROM `part`
 WHERE manufacturer = '266b3a07-b191e7f91991';
 
 
+-- functional requirement 4
 /* add an outlet*/
 INSERT INTO `outlet` VALUES ('outlet0010','warehouse0010');
 
@@ -52,6 +51,7 @@ DELETE FROM `outlet`
 WHERE outletID = 'outlet0008';
 
 
+-- functional requirement 5
 /* add a warehouse*/
 INSERT INTO `warehouse` VALUES ('warehouse0010',36000,2400,'warehouse0004');
 
@@ -75,6 +75,7 @@ DELETE FROM `outlet`
 WHERE warehouseID = 'warehouse0009';
 
 
+-- functional requirement 6
 /*add a manufacturer*/
 INSERT INTO `manufacturer` (`manufactuerid`, `name`, `contractstartdate`, `contractenddate`) VALUES ('0a7da3cb-93afff90127c', 'Sony', '01/01/2022', '01/01/2024');
 
@@ -93,6 +94,7 @@ DELETE FROM `manufacturer`
 WHERE manufactuerid = '0ab4b34f-a850d76aafef';
 
 
+-- functional requirement 7
 /*add an employee and also add their role in the of_type table*/
 INSERT INTO `employee` VALUES ('emp0013','Samay','Raina','1996-01-20','2023-03-10','emp0004');
 INSERT INTO `of_type` VALUES ('emp0013','TECHNICIAN');
@@ -102,19 +104,19 @@ UPDATE of_type
 SET emptype = 'DEVELOPER'
 WHERE empid = 'emp0006';
 
-/*employee's offboarding*/
 
-
+-- functional requirement 8
 /*customers can see the which parts the PC is made of*/
 select * from `made_of`
 WHERE pcid = 'pc0003';
 
 /*customers can see the available parts in the outlets*/
 SELECT P.modelnumber, P.typename, P.warranty, P.price, P.serialnumber, P.manufacturer
-FROM part P, sells_part S
-WHERE S.modelnumber = P.modelnumber, S.outletid = 'outlet0003';
+FROM `part` P, `sells_part` S
+WHERE S.modelnumber = P.modelnumber AND S.outletid = 'outlet0003';
 
 
+-- functional requirement 9, 10
 /*add an order for pc*/
 INSERT INTO `payment` VALUES ('card00011',6009516990801866,'08/29',498,'Jermaine Taylor');
 INSERT INTO `order` VALUES (1000023466,'2023-05-06','ad972f','outlet0003','card00011');
@@ -135,6 +137,8 @@ WHERE ordernumber = '1000023461';
 DELETE FROM `order`
 WHERE ordernumber = '1000023461';
 
+
+-- functional requirement 11
 /*update quantity for available part*/
 UPDATE `stores`
 SET quantity = '20'
