@@ -125,8 +125,10 @@ INSERT INTO `order_contains_part` VALUES (1000023467,'inteli9cpu0008');
 /*delete an order and also it's child instances given the order number*/
 DELETE FROM `order_contains_part`
 WHERE ordernumber = '1000023461';
+
 DELETE FROM `order_contains_pc`
 WHERE ordernumber = '1000023461';
+
 DELETE FROM `order`
 WHERE ordernumber = '1000023461';
 
