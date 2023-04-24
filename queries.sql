@@ -106,10 +106,13 @@ WHERE empid = 'emp0006';
 
 
 /*customers can see the which parts the PC is made of*/
-select * from `made_of`;
+select * from `made_of`
+WHERE pcid = 'pc0003';
 
-/*customers can see the available parts in the outlets/warehouses */
-select * from `part`;
+/*customers can see the available parts in the outlets*/
+SELECT P.modelnumber, P.typename, P.warranty, P.price, P.serialnumber, P.manufacturer
+FROM part P, sells_part S
+WHERE S.modelnumber = P.modelnumber, S.outletid = 'outlet0003';
 
 
 /*add an order for pc*/
