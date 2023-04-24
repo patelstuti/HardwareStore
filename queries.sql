@@ -132,3 +132,7 @@ WHERE ordernumber = '1000023461';
 DELETE FROM `order`
 WHERE ordernumber = '1000023461';
 
+/*update quantity for available part*/
+UPDATE `stores`
+SET quantity = '20'
+WHERE warehouseid = 'warehouse0005' AND modelnumber = 'amdryzencpu0010';
