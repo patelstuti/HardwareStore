@@ -11,8 +11,10 @@ SET price = '999.99'
 WHERE modelnumber = 'inteli9cpu0010';
 
 /*remove a part given their model number, also delete it's instance from all the other tables where it is stored*/
+DELETE FROM `stores`
+where modelnumber = 'amdryzencpu0007';
 DELETE FROM `part` 
-WHERE modelnumber = 'inteli9cpu0006';
+WHERE modelnumber = 'amdryzencpu0007';
 
 
 /*Manufacturer able to view all the parts they manufacture using the manufacture ID*/
@@ -30,12 +32,24 @@ INSERT INTO `outlet` VALUES ('outlet0010','warehouse0010');
 
 /*update the outlet's supplying warehouse to be updated given the outlet ID*/
 UPDATE `outlet`
-SET warehouseid = 'warehouse0012'
+SET warehouseid = 'warehouse0004'
 WHERE outletid = 'outlet0005';
 
-/*remove an outlet given outletID, also delete it's instance from all the other tables where it is stored*/
+/*remove an outlet given outletID, also delete it's instance from all the other child tables where it is stored*/
+DELETE FROM `outlet_located`
+WHERE outletID = 'outlet0008';
+
+DELETE FROM `outlet_managed`
+WHERE outletID = 'outlet0008';
+
+DELETE FROM `sells_part`
+WHERE outletID = 'outlet0008';
+
+DELETE FROM `sells_pc`
+WHERE outletID = 'outlet0008';
+
 DELETE FROM `outlet` 
-WHERE outletID = 'outlet0007';
+WHERE outletID = 'outlet0008';
 
 
 /* add a warehouse*/
@@ -108,7 +122,11 @@ INSERT INTO `payment` VALUES ('card00012',2049516990666008,'10/25',589,'Justine 
 INSERT INTO `order` VALUES (1000023467,'2023-05-09','c355b5','outlet0002','card00012');
 INSERT INTO `order_contains_part` VALUES (1000023467,'inteli9cpu0008');
 
-/*delete an order with order number*/
+/*delete an order and also it's child instances given the order number*/
+DELETE FROM `order_contains_part`
+WHERE ordernumber = '1000023461';
+DELETE FROM `order_contains_pc`
+WHERE ordernumber = '1000023461';
 DELETE FROM `order`
 WHERE ordernumber = '1000023461';
 
